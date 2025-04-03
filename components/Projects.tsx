@@ -44,7 +44,7 @@ const Projects = () => {
   }, [direction, currentSlide]);
 
   // Helper function to determine position class
-  const getPositionClass = (index, visibleIndices) => {
+  const getPositionClass = (index: number, visibleIndices: number[]): string => {
     if (index === visibleIndices[0]) return "slide-left";
     if (index === visibleIndices[1]) return "slide-center";
     if (index === visibleIndices[2]) return "slide-right";

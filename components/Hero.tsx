@@ -12,7 +12,7 @@ export default function ProfileCard() {
 
         {/* Name and Title */}
         <div className="space-y-1">
-          <p className="text-6xl font-bold tracking-tight">Hey, I'm Ayush Rathod.</p>
+          <p className="text-6xl font-bold tracking-tight">Hey, I&apos;m Ayush Rathod.</p>
           <div className="flex items-center text-7xl font-bold">Developer & Innovator</div>
         </div>
 
