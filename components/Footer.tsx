@@ -11,6 +11,15 @@ const Footer = () => {
 
           <div className="flex space-x-6">
             <a
+              href="mailto:ayushjrathod@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-400 transition-colors"
+              aria-label="Email"
+            >
+              <Image src="/socials/email.svg" alt="Logo" width={40} height={40} className="m-4" />
+            </a>
+            <a
               href="https://linkedin.com/in/ayushjrathod"
               target="_blank"
               rel="noopener noreferrer"

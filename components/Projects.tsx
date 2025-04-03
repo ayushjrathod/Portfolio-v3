@@ -3,7 +3,12 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Projects = () => {
-  const slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const slides = [
+    { id: 1, image: "/project/project1.png", alt: "Project 1" },
+    { id: 2, image: "/project/project2.png", alt: "Project 2" },
+    { id: 3, image: "/project/project1.png", alt: "Project 3" },
+    { id: 4, image: "/project/project2.png", alt: "Project 4" },
+  ];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState("");
   const [isAnimating, setIsAnimating] = useState(false);
@@ -53,10 +58,10 @@ const Projects = () => {
       <div className="flex justify-center overflow-hidden">
         {getVisibleIndices().map((index) => (
           <div
-            key={index}
+            key={slides[index].id}
             id="slide"
             className={`border-2 border-gray-300 rounded-4xl p-8 relative
-                      transition-all duration-500 ease-in-out w-[90vw] max-w-[800px]
+                      transition-all duration-500 ease-in-out w-[90vw] max-w-[800px] h-fit
                       ${index === visibleIndices[1] ? "bg-gray-50" : "bg-gray-400"}
                       ${getPositionClass(index, visibleIndices)}`}
           >
@@ -70,13 +75,33 @@ const Projects = () => {
             <div className="rounded-full bg-gray-300 absolute bottom-[18px] right-[18px] w-3 h-3">&nbsp;</div>
             <div className="border-1 border-gray-300 rounded-2xl p-2 bg-gray-100 shadow-xl">
               <Image
-                src="/hero.png"
-                alt="Hero"
+                src={slides[index].image}
+                alt={slides[index].alt}
                 width={1200}
                 height={1200}
-                className="w-full h-auto min-w-[600px]"
+                className="w-full h-fit min-w-[600px]"
                 priority
               />
+
+              {/* Project links */}
+              <div className="flex justify-between w-full pr-22 absolute">
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className=" font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                >
+                  Demo
+                </a>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium py-2 px-4 rounded-lg transition-colors duration-300"
+                >
+                  Github
+                </a>
+              </div>
             </div>
           </div>
         ))}
