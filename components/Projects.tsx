@@ -31,6 +31,32 @@ const Projects = () => {
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
   };
 
+  // Handle horizontal scroll to navigate carousel
+  useEffect(() => {
+    const handleWheel = (event: WheelEvent) => {
+      // Check if the scroll is primarily horizontal or if it's a trackpad horizontal gesture
+      if (Math.abs(event.deltaX) > Math.abs(event.deltaY) && Math.abs(event.deltaX) > 5) {
+        event.preventDefault();
+        if (event.deltaX > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+      }
+    };
+
+    const carouselElement = document.querySelector(".relative.w-screen");
+    if (carouselElement) {
+      carouselElement.addEventListener("wheel", handleWheel as EventListener, { passive: false });
+    }
+
+    return () => {
+      if (carouselElement) {
+        carouselElement.removeEventListener("wheel", handleWheel as EventListener);
+      }
+    };
+  }, [isAnimating]); // Depend on isAnimating to respect animation state
+
   // Reset animation direction after animation completes
   useEffect(() => {
     if (direction) {
@@ -51,97 +77,117 @@ const Projects = () => {
     return "slide-hidden";
   };
 
+  // Handle click on a slide
+  const handleSlideClick = (position: string) => {
+    if (isAnimating) return; // Prevent clicking during animation
+
+    if (position === "slide-left") {
+      prevSlide();
+    } else if (position === "slide-right") {
+      nextSlide();
+    }
+  };
+
   const visibleIndices = getVisibleIndices();
 
   return (
     <div className="relative w-screen z-10">
-      <div className="flex justify-center overflow-hidden">
-        {getVisibleIndices().map((index) => (
-          <div
-            key={slides[index].id}
-            id="slide"
-            className={`border-2 border-gray-300 rounded-4xl p-8 relative
-                      transition-all duration-500 ease-in-out w-[90vw] max-w-[800px] h-fit
-                      ${index === visibleIndices[1] ? "bg-gray-50" : "bg-gray-400"}
-                      ${getPositionClass(index, visibleIndices)}`}
-          >
-            {/* Top-left dot */}
-            <div className="rounded-full bg-gray-300 absolute top-[18px] left-[18px] w-3 h-3">&nbsp;</div>
-            {/* Top-right dot */}
-            <div className="rounded-full bg-gray-300 absolute top-[18px] right-[18px] w-3 h-3">&nbsp;</div>
-            {/* Bottom-left dot */}
-            <div className="rounded-full bg-gray-300 absolute bottom-[18px] left-[18px] w-3 h-3">&nbsp;</div>
-            {/* Bottom-right dot */}
-            <div className="rounded-full bg-gray-300 absolute bottom-[18px] right-[18px] w-3 h-3">&nbsp;</div>
-            <div className="border-1 border-gray-300 rounded-2xl p-2 bg-gray-100 shadow-xl">
-              <Image
-                src={slides[index].image}
-                alt={slides[index].alt}
-                width={1200}
-                height={1200}
-                className="w-full h-fit min-w-[600px]"
-                priority
-              />
+      <div className="flex justify-center overflow-hidden p-12">
+        {getVisibleIndices().map((index) => {
+          const positionClass = getPositionClass(index, visibleIndices);
+          return (
+            <div
+              key={slides[index].id}
+              id="slide"
+              onClick={() => handleSlideClick(positionClass)}
+              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-8 relative
+                        transition-all duration-500 ease-in-out w-[90vw] max-w-[800px] h-full
+                        ${index === visibleIndices[1] ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-400 dark:bg-gray-700"}
+                        ${positionClass}`}
+            >
+              {/* Top-left dot */}
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[18px] left-[18px] w-3 h-3">
+                &nbsp;
+              </div>
+              {/* Top-right dot */}
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[18px] right-[18px] w-3 h-3">
+                &nbsp;
+              </div>
+              {/* Bottom-left dot */}
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[18px] left-[18px] w-3 h-3">
+                &nbsp;
+              </div>
+              {/* Bottom-right dot */}
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[18px] right-[18px] w-3 h-3">
+                &nbsp;
+              </div>
+              <div className="border-1 border-gray-300 dark:border-gray-600 rounded-2xl p-2 bg-gray-100 dark:bg-gray-900 shadow-xl">
+                <Image
+                  src={slides[index].image}
+                  alt={slides[index].alt}
+                  width={1200}
+                  height={1200}
+                  className="w-full h-fit min-w-[600px]"
+                  priority
+                />
 
-              {/* Project links */}
-              <div className="flex justify-between w-full pr-22 absolute">
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className=" font-medium py-2 px-4 rounded-lg transition-colors duration-300"
-                >
-                  Demo
-                </a>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium py-2 px-4 rounded-lg transition-colors duration-300"
-                >
-                  Github
-                </a>
+                {/* Project links */}
+                <div className="flex justify-between w-full pr-22 absolute">
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium py-2 px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                  >
+                    Demo
+                  </a>
+                  <a
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium py-2 px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                  >
+                    Github
+                  </a>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
       <button
         onClick={prevSlide}
-        className="z-12 absolute left-18 top-1/2 -translate-y-1/2 bg-gray-200 text-black px-4 py-2 rounded-full"
+        className="cursor-pointer z-12 absolute left-18 top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600"
       >
         ←
       </button>
       <button
         onClick={nextSlide}
-        className="z-12 absolute right-18 top-1/2 -translate-y-1/2 bg-gray-200 text-black px-4 py-2 rounded-full"
+        className="cursor-pointer z-12 absolute right-18 top-1/2 -translate-y-1/2 bg-gray-200 dark:bg-gray-700 text-black dark:text-white px-4 py-2 rounded-full hover:bg-gray-300 dark:hover:bg-gray-600"
       >
         →
       </button>
 
       <style jsx>{`
-        .slide-left {
-          transform: translateX(-5%) scale(0.9);
-          opacity: 0.7;
+        .slide {
+          transition: all 0.3s ease-in-out;
           z-index: 5;
-          ${direction === "right" ? "animation: slideOutLeft 500ms ease-in-out forwards;" : ""}
-          ${direction === "left" ? "animation: slideInCenter 500ms ease-in-out forwards;" : ""}
+          opacity: 0.7;
+          transform: scale(0.9);
+          cursor: pointer;
+        }
+
+        .slide-left {
+          transform: translateX(-5%);
+        }
+        .slide-right {
+          transform: translateX(5%);
         }
 
         .slide-center {
           transform: translateX(0) scale(1);
           opacity: 1;
           z-index: 10;
-          ${direction === "right" ? "animation: slideOutCenter 500ms ease-in-out forwards;" : ""}
-          ${direction === "left" ? "animation: slideOutCenter 500ms ease-in-out forwards;" : ""}
-        }
-
-        .slide-right {
-          transform: translateX(5%) scale(0.9);
-          opacity: 0.7;
-          z-index: 5;
-          ${direction === "right" ? "animation: slideInCenter 500ms ease-in-out forwards;" : ""}
-          ${direction === "left" ? "animation: slideOutRight 500ms ease-in-out forwards;" : ""}
         }
 
         .slide-hidden {
@@ -150,51 +196,39 @@ const Projects = () => {
           pointer-events: none;
         }
 
-        @keyframes slideInCenter {
+        ${direction &&
+        `
+    .slide-left {
+      animation: ${direction === "right" ? "slide-out" : "slide-in"} 500ms forwards;
+    }
+    .slide-center {
+      animation: slide-center-out 500ms forwards;
+    }
+    .slide-right {
+      animation: ${direction === "right" ? "slide-in" : "slide-out"} 500ms forwards;
+    }
+  `}
+
+        @keyframes slide-in {
           from {
-            transform: translateX(${direction === "right" ? "5%" : "-5%"}) scale(0.9);
-            opacity: 0.7;
-            z-index: 5;
+            transform: translateX(${direction === "right" ? "5%" : "-5%"});
           }
           to {
             transform: translateX(0) scale(1);
             opacity: 1;
-            z-index: 10;
           }
         }
 
-        @keyframes slideOutCenter {
-          from {
-            transform: translateX(0) scale(1);
-            opacity: 1;
-            z-index: 10;
+        @keyframes slide-out {
+          to {
+            transform: translateX(${direction === "right" ? "-10%" : "10%"}) scale(${direction === "right" ? 0.8 : 0.8});
+            opacity: 0;
           }
+        }
+
+        @keyframes slide-center-out {
           to {
             transform: translateX(${direction === "right" ? "-5%" : "5%"}) scale(0.9);
-            opacity: 0.7;
-            z-index: 5;
-          }
-        }
-
-        @keyframes slideOutLeft {
-          from {
-            transform: translateX(-5%) scale(0.9);
-            opacity: 0.7;
-          }
-          to {
-            transform: translateX(-10%) scale(0.8);
-            opacity: 0;
-          }
-        }
-
-        @keyframes slideOutRight {
-          from {
-            transform: translateX(5%) scale(0.9);
-            opacity: 0.7;
-          }
-          to {
-            transform: translateX(10%) scale(0.8);
-            opacity: 0;
           }
         }
       `}</style>

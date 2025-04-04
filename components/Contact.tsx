@@ -66,18 +66,20 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-12  w-full">
+    <section className="py-12 w-full">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-2">Get In Touch</h2>
-          <p className="text-center mb-4 text-xl">
+          <h2 className="text-3xl font-bold text-center mb-2 dark:text-white">Get In Touch</h2>
+          <p className="text-center mb-4 text-xl dark:text-gray-300">
             I am always interested in exploring new opportunities and collaborations. If you have a project in mind or
             just want to say hi, feel free to reach out!
           </p>
           {submitStatus && (
             <div
               className={`p-4 mb-6 rounded ${
-                submitStatus.success ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+                submitStatus.success
+                  ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
+                  : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
               }`}
             >
               {submitStatus.message}
@@ -87,7 +89,7 @@ const Contact = () => {
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="flex w-full gap-4">
               <div className="w-full">
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Name
                 </label>
                 <input
@@ -97,12 +99,12 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-8 border border-gray-300 rounded-md focus:ring-gray-500 focus:border-gray-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
                 />
               </div>
 
               <div className="w-full">
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Email
                 </label>
                 <input
@@ -112,12 +114,12 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-8 border border-gray-300 rounded-md focus:gray-indigo-500 focus:border-gray-500"
+                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:gray-indigo-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
                 />
               </div>
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Message
               </label>
               <textarea
@@ -127,7 +129,7 @@ const Contact = () => {
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-gray-500 focus:border-gray-500"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
               />
             </div>
 
@@ -135,7 +137,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="px-8 py-3 w-full bg-gray-800 text-white rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
+                className="cursor-pointer px-8 py-3 w-full bg-gray-800 text-white dark:bg-white dark:text-black rounded-md hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>

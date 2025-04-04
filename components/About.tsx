@@ -3,9 +3,9 @@ import Image from "next/image";
 const About = () => {
   return (
     <div className="max-w-4xl mt-24">
-      <p className="text-3xl font-bold text-center mb-8">About Me</p>
-      <Image src="/aboutme.png" alt="Hero Image" width={400} height={400} className="mx-auto mb-4" />
-      <p className="text-2xl text-left mb-4">
+      <p className="text-3xl font-bold text-center mb-8 dark:text-white">About Me</p>
+      <Image src="/aboutme.png" alt="Hero Image" width={300} height={400} className="mx-auto mb-4" />
+      <p className="text-xl text-left mb-4 dark:text-gray-300">
         Hey, Ayush here, a passionate software engineer with a knack for crafting innovative solutions. I am really
         passionate about solving problems with AI powered solutions.
         <br />
