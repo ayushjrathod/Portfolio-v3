@@ -72,8 +72,8 @@ const HowCanIHelp = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white py-16 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5">
+    <div className="w-full text-gray-900 dark:text-white py-16 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-10">
         {icons.map((tech, index) => (
           <div
             key={index}
