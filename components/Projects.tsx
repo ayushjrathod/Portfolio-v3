@@ -100,25 +100,25 @@ const Projects = () => {
               key={slides[index].id}
               id="slide"
               onClick={() => handleSlideClick(positionClass)}
-              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-8 relative
-                        transition-all duration-500 ease-in-out w-[90vw] max-w-[800px] h-full
+              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-4 md:p-8 relative
+                        transition-all duration-500 ease-in-out w-[95vw] md:w-[90vw] max-w-[800px] h-full
                         ${index === visibleIndices[1] ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-400 dark:bg-gray-700"}
                         ${positionClass}`}
             >
               {/* Top-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[18px] left-[18px] w-3 h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Top-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[18px] right-[18px] w-3 h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[18px] left-[18px] w-3 h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[18px] right-[18px] w-3 h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               <div className="border-1 border-gray-300 dark:border-gray-600 rounded-2xl p-2 bg-gray-100 dark:bg-gray-900 shadow-xl">
@@ -127,7 +127,7 @@ const Projects = () => {
                   alt={slides[index].alt}
                   width={1200}
                   height={1200}
-                  className="w-full h-fit min-w-[600px]"
+                  className="w-full h-fit min-w-[300px] md:min-w-[600px]"
                   priority
                 />
 
@@ -137,7 +137,7 @@ const Projects = () => {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium py-2 px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                    className="text-sm md:text-base font-medium py-2 px-3 md:px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
                   >
                     Demo
                   </a>
@@ -145,7 +145,7 @@ const Projects = () => {
                     href="#"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-medium py-2 px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
+                    className="text-sm md:text-base font-medium py-2 px-3 md:px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
                   >
                     Github
                   </a>

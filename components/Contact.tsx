@@ -33,18 +33,17 @@ const Contact = () => {
 
     try {
       const templateParams = {
-        to_email: "ayushjrathod7@gmail.com",
         from_name: formData.name,
-        from_email: formData.email,
+        reply_to: formData.email,
         subject: formData.subject,
-        message: "The message is: " + formData.message + " from " + formData.email,
+        message: formData.message,
       };
 
       await emailjs.send(serviceId, templateId, templateParams, publicKey);
 
       setSubmitStatus({
         success: true,
-        message: "Your message has been sent successfully!",
+        message: "Message sent successfully! I'll get back to you soon.",
       });
 
       // Reset form
@@ -55,7 +54,6 @@ const Contact = () => {
         message: "",
       });
     } catch (error) {
-      console.error("Error sending email:", error);
       setSubmitStatus({
         success: false,
         message: "Failed to send message. Please try again later.",
@@ -66,17 +64,17 @@ const Contact = () => {
   };
 
   return (
-    <section className="py-12 w-full">
-      <div className="container mx-auto px-4">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-2 dark:text-white">Get In Touch</h2>
-          <p className="text-center mb-4 text-xl dark:text-gray-300">
+    <div className="py-8 md:py-16">
+      <div className="max-w-4xl mx-auto px-4">
+        <div className="bg-white dark:bg-black shadow-lg rounded-lg p-4 md:p-8">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 dark:text-white">Get In Touch</h2>
+          <p className="text-center mb-4 text-base md:text-xl dark:text-gray-300">
             I am always interested in exploring new opportunities and collaborations. If you have a project in mind or
             just want to say hi, feel free to reach out!
           </p>
           {submitStatus && (
             <div
-              className={`p-4 mb-6 rounded ${
+              className={`p-3 md:p-4 mb-4 md:mb-6 rounded ${
                 submitStatus.success
                   ? "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300"
                   : "bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300"
@@ -86,8 +84,8 @@ const Contact = () => {
             </div>
           )}
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="flex w-full gap-4">
+          <form onSubmit={handleSubmit} className="space-y-4 md:space-y-6">
+            <div className="flex flex-col md:flex-row w-full gap-4">
               <div className="w-full">
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                   Name
@@ -99,7 +97,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
+                  className="w-full px-3 md:px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white text-sm md:text-base"
                 />
               </div>
 
@@ -114,10 +112,26 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:gray-indigo-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
+                  className="w-full px-3 md:px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:gray-indigo-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white text-sm md:text-base"
                 />
               </div>
             </div>
+
+            <div>
+              <label htmlFor="subject" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                Subject
+              </label>
+              <input
+                type="text"
+                id="subject"
+                name="subject"
+                value={formData.subject}
+                onChange={handleChange}
+                required
+                className="w-full px-3 md:px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white text-sm md:text-base"
+              />
+            </div>
+
             <div>
               <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Message
@@ -125,11 +139,11 @@ const Contact = () => {
               <textarea
                 id="message"
                 name="message"
-                rows={5}
+                rows={4}
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white"
+                className="w-full px-3 md:px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-md focus:ring-gray-500 focus:border-gray-500 dark:bg-gray-800 dark:text-white text-sm md:text-base"
               />
             </div>
 
@@ -137,7 +151,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="cursor-pointer px-8 py-3 w-full bg-gray-800 text-white dark:bg-white dark:text-black rounded-md hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors"
+                className="w-full md:w-auto cursor-pointer px-6 md:px-8 py-2 md:py-3 bg-gray-800 text-white dark:bg-white dark:text-black rounded-md hover:bg-gray-700 dark:hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 disabled:opacity-50 transition-colors text-sm md:text-base font-medium"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </button>
@@ -145,7 +159,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 

@@ -34,7 +34,7 @@ export default function RootLayout({
           <div className="fixed z-50 flex justify-center w-full">
             <Navbar />
           </div>
-          <div className="mx-24 md:border-l-1 md:border-r-1 border-gray-300">{children}</div>
+          <div className="mx-4 md:mx-12 lg:mx-24 md:border-l-1 md:border-r-1 border-gray-300">{children}</div>
         </ThemeProvider>
       </body>
     </html>
