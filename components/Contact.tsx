@@ -53,7 +53,7 @@ const Contact = () => {
         subject: "",
         message: "",
       });
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
         message: "Failed to send message. Please try again later.",

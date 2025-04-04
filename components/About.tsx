@@ -15,11 +15,12 @@ const About = () => {
         I believe in continuous learning and growth. Every project is a chance to learn something new and push my
         boundaries. <br />
         <br />
-        When I'm not writing code, you'll find me on the badminton court for a dose of adrenaline or diving into the
-        latest video game. Quiet nights? Books or battling some epic chords on my guitar (still a work in progress, but
-        hey, gotta start somewhere).
+        When I&apos;m not writing code, you&apos;ll find me on the badminton court for a dose of adrenaline or diving
+        into the latest video game. Quiet nights? Books or battling some epic chords on my guitar (still a work in
+        progress, but hey, gotta start somewhere).
         <br />
-        <br /> Let's break the mold and create something awesome together. Buckle up, it's gonna be a wild ride.
+        <br /> Let&apos;s break the mold and create something awesome together. Buckle up, it&apos;s gonna be a wild
+        ride.
       </p>
     </div>
   );
