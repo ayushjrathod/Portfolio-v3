@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const Projects = () => {
   const slides = [
@@ -19,17 +19,17 @@ const Projects = () => {
     return [leftIndex, currentSlide, rightIndex];
   };
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     if (isAnimating) return; // Prevent clicking during animation
     setDirection("right");
     setCurrentSlide((prev) => (prev + 1) % slides.length);
-  };
+  }, [isAnimating, slides.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     if (isAnimating) return; // Prevent clicking during animation
     setDirection("left");
     setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  };
+  }, [isAnimating, slides.length]);
 
   // Handle horizontal scroll to navigate carousel
   useEffect(() => {
@@ -55,7 +55,7 @@ const Projects = () => {
         carouselElement.removeEventListener("wheel", handleWheel as EventListener);
       }
     };
-  }, [isAnimating]); // Depend on isAnimating to respect animation state
+  }, [isAnimating, nextSlide, prevSlide]); // Added missing dependencies
 
   // Reset animation direction after animation completes
   useEffect(() => {
