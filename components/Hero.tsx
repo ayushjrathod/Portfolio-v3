@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function ProfileCard() {
   return (
-    <div className="max-w-2xl p-6 bg-white dark:bg-gray-800 rounded-lg">
+    <div className="max-w-2xl p-6 bg-white dark:bg-black rounded-lg">
       <div className="flex flex-col items-start space-y-4">
         {/* Profile Image */}
         <div className="relative w-30 h-30 overflow-hidden rounded-full mx-2 my-8">
