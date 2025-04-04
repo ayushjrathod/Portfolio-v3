@@ -15,7 +15,6 @@ const HowCanIHelp = () => {
   const [icons, setIcons] = useState<TechIcon[]>([]);
 
   useEffect(() => {
-    // Define icons data
     const iconData = [
       { iconPath: "/skills/cpp.png", name: "C++" },
       { iconPath: "/skills/docker.png", name: "Docker" },
@@ -73,9 +72,8 @@ const HowCanIHelp = () => {
   }, []);
 
   return (
-    <div className="w-full bg-white text-gray-900 py-16 relative overflow-hidden">
-      {/* Background with rotating icons */}
-      <div className="absolute inset-0 opacity-20">
+    <div className="w-full bg-white dark:bg-gray-900 text-gray-900 dark:text-white py-16 relative overflow-hidden">
+      <div className="absolute inset-0 opacity-5">
         {icons.map((tech, index) => (
           <div
             key={index}
@@ -88,76 +86,89 @@ const HowCanIHelp = () => {
               }s linear infinite`,
               width: `${tech.size}px`,
               height: `${tech.size}px`,
+              // filter: "saturate(0)",
             }}
           >
-            <Image src={tech.iconPath} alt={tech.name} width={tech.size} height={tech.size} />
+            <Image src={tech.iconPath} alt={tech.name} width={tech.size} height={tech.size} className="dark:invert" />
           </div>
         ))}
       </div>
-      <p className="text-4xl font-bold text-center mb-3">How Can I Help ?</p>
-      <p className="text-center text-xl text-gray-600 mb-6">The things I bring to the table!</p>
+      <p className="text-4xl font-bold text-center mb-3 dark:text-white">How Can I Help ?</p>
+      <p className="text-center text-xl text-gray-600 dark:text-gray-400 mb-6">The things I bring to the table!</p>
       <div className="container  mx-auto px-4 w-5xl">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
           {/* Software Development */}
-          <div className="border shadow-xs border-gray-200 p-8 relative">
+          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
             <div className="flex items-center mb-6">
-              <Image src="/skills/sde.svg" alt="Software Development" width={72} height={72} className="size-12 mr-2" />
+              <Image
+                src="/skills/sde.svg"
+                alt="Software Development"
+                width={72}
+                height={72}
+                className="size-12 mr-2 dark:invert"
+              />
               <div>
-                <h2 className="text-2xl font-bold">Software</h2>
-                <h2 className="text-2xl font-bold">Development</h2>
+                <h2 className="text-2xl font-bold dark:text-white">Software</h2>
+                <h2 className="text-2xl font-bold dark:text-white">Development</h2>
               </div>
             </div>
-            <div className="text-gray-600 space-y-4">
-              <div className="text-xs text-gray-400">&lt;h3&gt;</div>
+            <div className="text-gray-600 dark:text-gray-400 space-y-4">
+              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
               <p className="text-sm border-l-2 px-4 ml-3">
                 Experienced in developing Full Stack applications with Typescript, Node.js, Express.js, FastAPI(python),
                 PostgreSQL, MongoDB, and Docker.
               </p>
-              <div className="text-xs text-gray-400">&lt;/h3&gt;</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
             </div>
           </div>
 
           {/* Frontend Dev */}
-          <div className="border shadow-xs border-gray-200 p-8 relative">
+          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
             <div className="flex items-center mb-6">
               <Image
                 src="/skills/react.svg"
                 alt="Frontend Development"
                 width={72}
                 height={72}
-                className="size-12 mr-2"
+                className="size-12 mr-2 dark:invert"
               />
               <div>
-                <h2 className="text-2xl font-bold">Frontend Dev</h2>
-                <h2 className="text-2xl font-bold">React, NextJS</h2>
+                <h2 className="text-2xl font-bold dark:text-white">Frontend Dev</h2>
+                <h2 className="text-2xl font-bold dark:text-white">React, NextJS</h2>
               </div>
             </div>
-            <div className="text-gray-600 space-y-4">
-              <div className="text-xs text-gray-400 ">&lt;h3&gt;</div>
+            <div className="text-gray-600 dark:text-gray-400 space-y-4">
+              <div className="text-xs text-gray-400 dark:text-gray-500 ">&lt;h3&gt;</div>
               <p className="text-sm border-l-2 px-4 ml-3">
                 Passionate about UI/UX. Have built user-friendly and responsive web applications using React.js,
                 Next.js, and Tailwind CSS frameworks.
               </p>
-              <div className="text-xs text-gray-400">&lt;/h3&gt;</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
             </div>
           </div>
 
           {/* Machine Learning */}
-          <div className="border shadow-xs border-gray-200 p-8 relative">
+          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
             <div className="flex items-center mb-6">
-              <Image src="/skills/ml.svg" alt="Web Design" width={72} height={72} className="size-12 mr-2" />
+              <Image
+                src="/skills/ml.svg"
+                alt="Web Design"
+                width={72}
+                height={72}
+                className="size-12 mr-2 dark:invert"
+              />
               <div>
-                <h2 className="text-2xl font-bold">Machine</h2>
-                <h2 className="text-2xl font-bold">Learning, Gen. AI</h2>
+                <h2 className="text-2xl font-bold dark:text-white">Machine</h2>
+                <h2 className="text-2xl font-bold dark:text-white">Learning, Gen. AI</h2>
               </div>
             </div>
-            <div className="text-gray-600 space-y-4">
-              <div className="text-xs text-gray-400">&lt;h3&gt;</div>
+            <div className="text-gray-600 dark:text-gray-400 space-y-4">
+              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
               <p className="text-sm border-l-2 px-4 ml-3">
                 I have a strong foundation in Machine Learning and Generative AI. I have worked on projects involving
                 Natural Language Processing (NLP) and Computer Vision.
               </p>
-              <div className="text-xs text-gray-400">&lt;/h3&gt;</div>
+              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
             </div>
           </div>
         </div>
