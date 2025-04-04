@@ -22,49 +22,32 @@ const HowCanIHelp = () => {
       { iconPath: "/skills/fastapi.png", name: "FastAPI" },
       { iconPath: "/skills/figma.png", name: "Figma" },
       { iconPath: "/skills/git.png", name: "Git" },
+      { iconPath: "/skills/honojs.png", name: "HonoJS" },
+      { iconPath: "/skills/javascript.png", name: "JavaScript" },
       { iconPath: "/skills/linux.png", name: "Linux" },
       { iconPath: "/skills/mongo.png", name: "MongoDB" },
       { iconPath: "/skills/nextjs.png", name: "Next.js" },
+      { iconPath: "/skills/nodejs.png", name: "Node.js" },
       { iconPath: "/skills/postgres.png", name: "PostgreSQL" },
       { iconPath: "/skills/python.png", name: "Python" },
-      { iconPath: "/skills/typescript.png", name: "TypeScript" },
-      { iconPath: "/skills/javascript.png", name: "JavaScript" },
-      { iconPath: "/skills/nodejs.png", name: "Node.js" },
-      { iconPath: "/skills/zod.png", name: "Zod" },
-      { iconPath: "/skills/html.png", name: "HTML" },
+      { iconPath: "/skills/react.png", name: "React" },
+      { iconPath: "/skills/sql.png", name: "SQL" },
       { iconPath: "/skills/streamlit.png", name: "Streamlit" },
+      { iconPath: "/skills/typescript.png", name: "TypeScript" },
+      { iconPath: "/skills/zod.png", name: "Zod" },
     ];
 
-    // Create a grid-based layout for even distribution
-    const numIcons = iconData.length;
-
-    // Calculate grid dimensions (approximate square grid)
-    const gridSize = Math.ceil(Math.sqrt(numIcons));
-    const cellWidth = 100 / gridSize; // percentage
-    const cellHeight = 80 / Math.ceil(numIcons / gridSize); // percentage
-
-    // Generate positions based on grid
-    const techIcons: TechIcon[] = iconData.map((icon, index) => {
-      // Calculate grid position
-      const row = Math.floor(index / gridSize);
-      const col = index % gridSize;
-
-      // Add some randomness within each cell
-      const randomOffsetX = (Math.random() * 0.6 + 0.2) * cellWidth; // 20%-80% of cell width
-      const randomOffsetY = (Math.random() * 0.6 + 0.2) * cellHeight; // 20%-80% of cell height
-
-      // Calculate final position
-      const top = `${row * cellHeight + randomOffsetY}%`;
-      const left = `${col * cellWidth + randomOffsetX}%`;
-
+    const techIcons = iconData.map((tech) => {
+      const top = `${Math.random() * 100}%`;
+      const left = `${Math.random() * 100}%`;
       return {
-        ...icon,
+        ...tech,
         position: { top, left },
         rotation: {
           speed: 10 + Math.random() * 20,
-          direction: Math.random() > 0.5 ? "clockwise" : "counterclockwise",
+          direction: Math.random() > 0.5 ? ("clockwise" as const) : ("counterclockwise" as const),
         },
-        size: 40 + Math.floor(Math.random() * 16),
+        size: 20 + Math.floor(Math.random() * 12), // Reduced icon sizes for better mobile view
       };
     });
 
@@ -72,8 +55,9 @@ const HowCanIHelp = () => {
   }, []);
 
   return (
-    <div className="w-full text-gray-900 dark:text-white py-16 relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
+    <div className="w-full text-gray-900 dark:text-white py-8 md:py-16 relative overflow-hidden">
+      {/* Background tech icons */}
+      <div className="absolute inset-0 opacity-10 ">
         {icons.map((tech, index) => (
           <div
             key={index}
@@ -86,89 +70,100 @@ const HowCanIHelp = () => {
               }s linear infinite`,
               width: `${tech.size}px`,
               height: `${tech.size}px`,
-              // filter: "saturate(0)",
             }}
           >
             <Image src={tech.iconPath} alt={tech.name} width={tech.size} height={tech.size} className="dark:invert" />
           </div>
         ))}
       </div>
-      <p className="text-4xl font-bold text-center mb-3 dark:text-white">How Can I Help ?</p>
-      <p className="text-center text-xl text-gray-600 dark:text-gray-400 mb-6">The things I bring to the table!</p>
-      <div className="container  mx-auto px-4 w-5xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-          {/* Software Development */}
-          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
-            <div className="flex items-center mb-6">
-              <Image
-                src="/skills/sde.svg"
-                alt="Software Development"
-                width={72}
-                height={72}
-                className="size-12 mr-2 dark:invert"
-              />
-              <div>
-                <h2 className="text-2xl font-bold dark:text-white">Software</h2>
-                <h2 className="text-2xl font-bold dark:text-white">Development</h2>
-              </div>
-            </div>
-            <div className="text-gray-600 dark:text-gray-400 space-y-4">
-              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
-              <p className="text-sm border-l-2 px-4 ml-3">
-                Experienced in developing Full Stack applications with Typescript, Node.js, Express.js, FastAPI(python),
-                PostgreSQL, MongoDB, and Docker.
-              </p>
-              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
-            </div>
-          </div>
 
-          {/* Frontend Dev */}
-          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
-            <div className="flex items-center mb-6">
-              <Image
-                src="/skills/react.svg"
-                alt="Frontend Development"
-                width={72}
-                height={72}
-                className="size-12 mr-2 dark:invert"
-              />
-              <div>
-                <h2 className="text-2xl font-bold dark:text-white">Frontend Dev</h2>
-                <h2 className="text-2xl font-bold dark:text-white">React, NextJS</h2>
+      {/* Main content */}
+      <div className="relative z-10">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-3 dark:text-white">How Can I Help ?</h2>
+        <p className="text-center text-base md:text-xl text-gray-600 dark:text-gray-400 mb-8 px-4">
+          The things I bring to the table!
+        </p>
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-4">
+            {/* Software Development */}
+            <div className="border shadow-md border-gray-200 dark:border-gray-700 p-6 md:p-8 rounded-xl  ">
+              <div className="flex items-center mb-6">
+                <div className="shrink-0">
+                  <Image
+                    src="/skills/sde.svg"
+                    alt="Software Development"
+                    width={48}
+                    height={48}
+                    className="size-10 md:size-12 dark:invert"
+                  />
+                </div>
+                <div className="ml-4">
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">Software</h2>
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">Development</h2>
+                </div>
+              </div>
+              <div className="text-gray-600 dark:text-gray-400 space-y-4">
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
+                <p className="text-sm md:text-base border-l-2 px-4 ml-3">
+                  Experienced in developing Full Stack applications with Typescript, Node.js, Express.js,
+                  FastAPI(python), PostgreSQL, MongoDB, and Docker.
+                </p>
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
               </div>
             </div>
-            <div className="text-gray-600 dark:text-gray-400 space-y-4">
-              <div className="text-xs text-gray-400 dark:text-gray-500 ">&lt;h3&gt;</div>
-              <p className="text-sm border-l-2 px-4 ml-3">
-                Passionate about UI/UX. Have built user-friendly and responsive web applications using React.js,
-                Next.js, and Tailwind CSS frameworks.
-              </p>
-              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
-            </div>
-          </div>
 
-          {/* Machine Learning */}
-          <div className="border shadow-xs border-gray-200 dark:border-gray-700 p-8 relative">
-            <div className="flex items-center mb-6">
-              <Image
-                src="/skills/ml.svg"
-                alt="Web Design"
-                width={72}
-                height={72}
-                className="size-12 mr-2 dark:invert"
-              />
-              <div>
-                <h2 className="text-2xl font-bold dark:text-white">Machine</h2>
-                <h2 className="text-2xl font-bold dark:text-white">Learning, Gen. AI</h2>
+            {/* Frontend Dev */}
+            <div className="border shadow-md border-gray-200 dark:border-gray-700 p-6 md:p-8 rounded-xl">
+              <div className="flex items-center mb-6">
+                <div className="shrink-0">
+                  <Image
+                    src="/skills/react.svg"
+                    alt="Frontend Development"
+                    width={48}
+                    height={48}
+                    className="size-10 md:size-12 dark:invert"
+                  />
+                </div>
+                <div className="ml-4">
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">Frontend Dev</h2>
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">React, NextJS</h2>
+                </div>
+              </div>
+              <div className="text-gray-600 dark:text-gray-400 space-y-4">
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
+                <p className="text-sm md:text-base border-l-2 px-4 ml-3">
+                  Passionate about UI/UX. Have built user-friendly and responsive web applications using React.js,
+                  Next.js, and Tailwind CSS frameworks.
+                </p>
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
               </div>
             </div>
-            <div className="text-gray-600 dark:text-gray-400 space-y-4">
-              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
-              <p className="text-sm border-l-2 px-4 ml-3">
-                I have a strong foundation in Machine Learning and Generative AI. I have worked on projects involving
-                Natural Language Processing (NLP) and Computer Vision.
-              </p>
-              <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
+
+            {/* Machine Learning */}
+            <div className="border shadow-md border-gray-200 dark:border-gray-700 p-6 md:p-8 rounded-xl ">
+              <div className="flex items-center mb-6">
+                <div className="shrink-0">
+                  <Image
+                    src="/skills/ml.svg"
+                    alt="ML"
+                    width={48}
+                    height={48}
+                    className="size-10 md:size-12 dark:invert"
+                  />
+                </div>
+                <div className="ml-4">
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">Machine</h2>
+                  <h2 className="text-xl md:text-2xl font-bold dark:text-white">Learning</h2>
+                </div>
+              </div>
+              <div className="text-gray-600 dark:text-gray-400 space-y-4">
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;h3&gt;</div>
+                <p className="text-sm md:text-base border-l-2 px-4 ml-3">
+                  Proficient in developing and deploying ML models, with a particular focus on NLP, Computer Vision, and
+                  Generative AI.
+                </p>
+                <div className="text-xs text-gray-400 dark:text-gray-500">&lt;/h3&gt;</div>
+              </div>
             </div>
           </div>
         </div>
