@@ -4,10 +4,36 @@ import { useCallback, useEffect, useState } from "react";
 
 const Projects = () => {
   const slides = [
-    { id: 1, image: "/project/project1.png", alt: "Project 1" },
-    { id: 2, image: "/project/project2.png", alt: "Project 2" },
-    { id: 3, image: "/project/project1.png", alt: "Project 3" },
-    { id: 4, image: "/project/project2.png", alt: "Project 4" },
+    {
+      id: 1,
+      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/twtykmlpjspyubqkayk3",
+      alt: "Advista Home Page",
+      title: "Advista- AI-Powered Advertising and Marketing Research Platform",
+      description:
+        "ADVISTA identifies user pain points and emotional triggers by aggregating data from platforms like Google, YouTube, Reddit, Quora, blogs, forums, social media, and app reviews. It analyzes competitor ads to surface high-performing hooks, CTAs, and content formats aligned with specific audiences and ad objectives.",
+      demo: "",
+      github: "https://github.com/ayushjrathod/Advista",
+    },
+    {
+      id: 2,
+      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/vva14psdqbet8dnmm1vh",
+      alt: "Nyaybodh Home Page",
+      title: "NyayaBodh - AI-Powered Legal Research Engine",
+      description:
+        "NyaayBodh streamlines legal research and document handling using AI. It empowers users with fast, intelligent access to legal information and contract generation tools.",
+      demo: "",
+      github: "https://github.com/ayushjrathod/NyayaBodh",
+    },
+    {
+      id: 3,
+      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/p3ptajvvqag2nsjksd4j",
+      title: "AuditIQ - AI-Powered Recipts Fraud Detection",
+      description:
+        "AuditIQ automates expense submission reviews with integrated AI-driven fraud detection. When anomalies are detected, it initiates an intelligent voice-based interrogation via Coco, the custom voice assistant.",
+      alt: "AuditIQ Home Page",
+      demo: "",
+      github: "https://github.com/ayushjrathod/AuditIQ",
+    },
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState("");
@@ -100,28 +126,28 @@ const Projects = () => {
               key={slides[index].id}
               id="slide"
               onClick={() => handleSlideClick(positionClass)}
-              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-4 md:p-8 relative
+              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-4 md:p-6 relative
                         transition-all duration-500 ease-in-out w-[95vw] md:w-[90vw] max-w-[800px] h-full
                         ${index === visibleIndices[1] ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-400 dark:bg-gray-700"}
                         ${positionClass}`}
             >
               {/* Top-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[12px] left-[10px] md:left-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Top-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[12px] right-[10px] md:right-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[12px] left-[10px] md:left-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[12px] right-[10px] md:right-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
-              <div className="border-1 border-gray-300 dark:border-gray-600 rounded-2xl p-2 bg-gray-100 dark:bg-gray-900 shadow-xl">
+              <div className="border-1 border-gray-300 dark:border-gray-600 rounded-2xl p-2 bg-gray-100 dark:bg-gray-900 shadow-xl relative group">
                 <Image
                   src={slides[index].image}
                   alt={slides[index].alt}
@@ -131,10 +157,20 @@ const Projects = () => {
                   priority
                 />
 
+                {/* Hover overlay with title and description */}
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-4 sm:p-6 md:p-8 rounded-2xl">
+                  <h3 className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
+                    {slides[index].title}
+                  </h3>
+                  <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
+                    {slides[index].description}
+                  </p>
+                </div>
+
                 {/* Project links */}
-                <div className="flex justify-between w-full pr-22 absolute">
+                <div className="flex justify-between w-full pr-4 absolute">
                   <a
-                    href="#"
+                    href={slides[index].demo}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm md:text-base font-medium py-2 px-3 md:px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
@@ -142,7 +178,7 @@ const Projects = () => {
                     Demo
                   </a>
                   <a
-                    href="#"
+                    href={slides[index].github}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm md:text-base font-medium py-2 px-3 md:px-4 rounded-lg transition-colors duration-300 text-gray-800 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400"
