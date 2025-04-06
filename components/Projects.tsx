@@ -126,25 +126,25 @@ const Projects = () => {
               key={slides[index].id}
               id="slide"
               onClick={() => handleSlideClick(positionClass)}
-              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-4 md:p-8 relative
+              className={`border-2 border-gray-300 dark:border-gray-600 rounded-4xl p-4 md:p-6 relative
                         transition-all duration-500 ease-in-out w-[95vw] md:w-[90vw] max-w-[800px] h-full
                         ${index === visibleIndices[1] ? "bg-gray-50 dark:bg-gray-800" : "bg-gray-400 dark:bg-gray-700"}
                         ${positionClass}`}
             >
               {/* Top-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[12px] left-[10px] md:left-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Top-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute top-[10px] md:top-[12px] right-[10px] md:right-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-left dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] left-[10px] md:left-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[12px] left-[10px] md:left-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               {/* Bottom-right dot */}
-              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[18px] right-[10px] md:right-[18px] w-2 md:w-3 h-2 md:h-3">
+              <div className="rounded-full bg-gray-300 dark:bg-gray-500 absolute bottom-[10px] md:bottom-[12px] right-[10px] md:right-[14px] w-2 md:w-3 h-2 md:h-3">
                 &nbsp;
               </div>
               <div className="border-1 border-gray-300 dark:border-gray-600 rounded-2xl p-2 bg-gray-100 dark:bg-gray-900 shadow-xl relative group">
@@ -158,13 +158,17 @@ const Projects = () => {
                 />
 
                 {/* Hover overlay with title and description */}
-                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-6 rounded-2xl">
-                  <h3 className="text-white text-xl md:text-2xl font-bold mb-4">{slides[index].title}</h3>
-                  <p className="text-white text-sm md:text-base">{slides[index].description}</p>
+                <div className="absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center p-4 sm:p-6 md:p-8 rounded-2xl">
+                  <h3 className="text-white text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold mb-2 sm:mb-3 md:mb-4">
+                    {slides[index].title}
+                  </h3>
+                  <p className="text-white text-xs sm:text-sm md:text-base lg:text-lg line-clamp-3 sm:line-clamp-4 md:line-clamp-none">
+                    {slides[index].description}
+                  </p>
                 </div>
 
                 {/* Project links */}
-                <div className="flex justify-between w-full pr-22 absolute">
+                <div className="flex justify-between w-full pr-4 absolute">
                   <a
                     href={slides[index].demo}
                     target="_blank"

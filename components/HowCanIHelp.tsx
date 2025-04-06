@@ -83,10 +83,10 @@ const HowCanIHelp = () => {
         <p className="text-center text-base md:text-xl text-gray-600 dark:text-gray-400 mb-8 px-4">
           The things I bring to the table!
         </p>
-        <div className="container mx-auto px-4 max-w-7xl">
+        <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-1 md:grid-cols-3">
             {/* Software Development */}
-            <div className="border  border-gray-200 dark:border-gray-700 p-6 md:p-8">
+            <div className="border  border-gray-300 dark:border-gray-700 p-6 md:p-8">
               <div className="flex items-center mb-6">
                 <div className="shrink-0">
                   <Image
@@ -113,7 +113,7 @@ const HowCanIHelp = () => {
             </div>
 
             {/* Frontend Dev */}
-            <div className="border border-gray-200 dark:border-gray-700 p-6 md:p-8 ">
+            <div className="border border-gray-300 dark:border-gray-700 p-6 md:p-8 ">
               <div className="flex items-center mb-6">
                 <div className="shrink-0">
                   <Image
@@ -140,7 +140,7 @@ const HowCanIHelp = () => {
             </div>
 
             {/* Machine Learning */}
-            <div className="border  border-gray-200 dark:border-gray-700 p-6 md:p-8 ">
+            <div className="border  border-gray-300 dark:border-gray-700 p-6 md:p-8 ">
               <div className="flex items-center mb-6">
                 <div className="shrink-0">
                   <Image
