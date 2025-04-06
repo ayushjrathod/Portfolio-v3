@@ -7,7 +7,13 @@ export default function ProfileCard() {
       <div className="flex flex-col items-start space-y-4">
         {/* Profile Image */}
         <div className="relative w-24 h-24 md:w-30 md:h-30 overflow-hidden rounded-full mx-2 my-4 md:my-8">
-          <Image src="/hero3.JPG" alt="Mia Carter profile photo" width={200} height={2} className="object-cover" />
+          <Image
+            src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto/g8o3pcmh90s4mzcktdze"
+            alt="Ayush profile photo"
+            width={200}
+            height={2}
+            className="object-cover"
+          />
         </div>
 
         {/* Name and Title */}

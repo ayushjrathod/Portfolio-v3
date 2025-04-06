@@ -66,7 +66,7 @@ const Contact = () => {
   return (
     <div className="py-8 md:py-16">
       <div className="max-w-4xl mx-auto px-4">
-        <div className="bg-white dark:bg-black shadow-lg rounded-lg p-4 md:p-8">
+        <div className="p-4 md:p-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 dark:text-white">Get In Touch</h2>
           <p className="text-center mb-4 text-base md:text-xl dark:text-gray-300">
             I am always interested in exploring new opportunities and collaborations. If you have a project in mind or
