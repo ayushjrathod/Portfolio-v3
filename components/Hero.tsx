@@ -8,10 +8,11 @@ export default function ProfileCard() {
         {/* Profile Image */}
         <div className="relative w-24 h-24 md:w-30 md:h-30 overflow-hidden rounded-full mx-2 my-4 md:my-8">
           <Image
-            src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto/g8o3pcmh90s4mzcktdze"
+            src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_200,h_200/g8o3pcmh90s4mzcktdze"
             alt="Ayush profile photo"
             width={200}
-            height={2}
+            height={200}
+            priority
             className="object-cover"
           />
         </div>

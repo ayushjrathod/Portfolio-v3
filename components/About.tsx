@@ -4,13 +4,16 @@ const About = () => {
   return (
     <div className="max-w-4xl mt-12 md:mt-24 px-4 md:px-0">
       <p className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 dark:text-white">About Me</p>
-      <Image
-        src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto/uj21grms05fyvppbkv2m"
-        alt="Hero Image"
-        width={300}
-        height={400}
-        className="mx-auto mb-4 w-48 md:w-auto"
-      />
+      <div className="relative w-48 md:w-[300px] h-[400px] mx-auto mb-4">
+        <Image
+          src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_300/uj21grms05fyvppbkv2m"
+          alt="Hero Image"
+          fill
+          sizes="(max-width: 768px) 192px, 300px"
+          className="object-contain"
+          loading="lazy"
+        />
+      </div>
       <p className="text-base md:text-xl text-left mb-4 dark:text-gray-300">
         Hey, Ayush here, a passionate software engineer with a knack for crafting innovative solutions. I am really
         passionate about solving problems with AI powered solutions.
