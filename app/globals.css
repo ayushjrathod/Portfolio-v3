@@ -119,4 +119,30 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Improve text rendering */
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Better focus outlines */
+  *:focus-visible {
+    outline: 2px solid theme("colors.gray.500");
+    outline-offset: 2px;
+  }
+
+  /* Improve button and input accessibility */
+  button,
+  input,
+  textarea,
+  select {
+    @apply focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-gray-900;
+  }
 }

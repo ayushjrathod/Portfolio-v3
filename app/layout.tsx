@@ -29,12 +29,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300`}
+      >
         <ThemeProvider>
           <div className="fixed z-50 flex justify-center w-full">
             <Navbar />
           </div>
-          <div className="mx-4 md:mx-12 lg:mx-24 md:border-l-1 md:border-r-1 border-gray-300">{children}</div>
+          <div className="mx-4 md:mx-8 lg:mx-16 xl:mx-24 md:border-l md:border-r border-gray-200 dark:border-gray-800 min-h-screen bg-white dark:bg-gray-900 shadow-sm">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

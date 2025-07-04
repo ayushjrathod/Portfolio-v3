@@ -7,15 +7,23 @@ import Projects from "@/components/Projects";
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center ">
-      <div className="h-screen w-full flex items-center justify-center">
+    <main className="flex flex-col items-center justify-center">
+      <section className="h-screen w-full flex items-center justify-center">
         <ProfileCard />
-      </div>
-      <Projects />
-      <About />
-      <HowCanIHelp />
-      <Contact />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="about">
+        <About />
+      </section>
+      <section id="services">
+        <HowCanIHelp />
+      </section>
+      <section id="contact">
+        <Contact />
+      </section>
       <Footer />
-    </div>
+    </main>
   );
 }
