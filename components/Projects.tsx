@@ -6,7 +6,8 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/twtykmlpjspyubqkayk3",
+      image:
+        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/twtykmlpjspyubqkayk3",
       alt: "Advista Home Page",
       title: "Advista",
       subtitle: "AI-Powered Advertising Research",
@@ -17,7 +18,8 @@ const Projects = () => {
     },
     {
       id: 2,
-      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/vva14psdqbet8dnmm1vh",
+      image:
+        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/vva14psdqbet8dnmm1vh",
       alt: "Nyaybodh Home Page",
       title: "NyayaBodh",
       subtitle: "AI Legal Research Engine",
@@ -28,7 +30,8 @@ const Projects = () => {
     },
     {
       id: 3,
-      image: "https://res.cloudinary.com/cnserver/image/upload/t_projects_section/p3ptajvvqag2nsjksd4j",
+      image:
+        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/p3ptajvvqag2nsjksd4j",
       title: "AuditIQ",
       subtitle: "AI-Powered Fraud Detection",
       description:
@@ -90,6 +93,9 @@ const Projects = () => {
                   fill
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 66vw"
+                  priority={activeProject.id === 1}
+                  placeholder="blur"
+                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               </div>

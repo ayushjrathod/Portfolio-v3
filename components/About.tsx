@@ -6,12 +6,14 @@ const About = () => {
       <p className="text-2xl md:text-3xl font-bold text-center mb-6 md:mb-8 dark:text-white">About Me</p>
       <div className="relative w-48 md:w-[300px] h-[400px] mx-auto mb-4">
         <Image
-          src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_300/uj21grms05fyvppbkv2m"
+          src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_300,h_400,c_fit/uj21grms05fyvppbkv2m"
           alt="Hero Image"
           fill
           sizes="(max-width: 768px) 192px, 300px"
           className="object-contain"
           loading="lazy"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
         />
       </div>
       <p className="text-base md:text-xl text-left mb-4 dark:text-gray-300">

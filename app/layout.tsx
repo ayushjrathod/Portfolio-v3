@@ -29,6 +29,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        {/* Preload critical images */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_200,h_200,c_fill,g_face/v1750407073/rwh3vitd2cyltekuz6qo.jpg"
+          type="image/jpeg"
+        />
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/twtykmlpjspyubqkayk3"
+          type="image/jpeg"
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300`}
       >

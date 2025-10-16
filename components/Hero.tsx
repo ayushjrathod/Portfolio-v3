@@ -8,12 +8,15 @@ export default function ProfileCard() {
         {/* Profile Image */}
         <div className="relative w-24 h-24 md:w-30 md:h-30 overflow-hidden rounded-full mx-2 my-4 md:my-8">
           <Image
-            src="https://res.cloudinary.com/cnserver/image/upload/v1750407073/rwh3vitd2cyltekuz6qo.jpg"
+            src="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_200,h_200,c_fill,g_face/v1750407073/rwh3vitd2cyltekuz6qo.jpg"
             alt="Ayush profile photo"
             width={200}
             height={200}
             priority
+            placeholder="blur"
+            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k="
             className="object-cover"
+            sizes="(max-width: 768px) 96px, 120px"
           />
         </div>
 
