@@ -1,5 +1,6 @@
 "use client";
 
+import { skillsData } from "@/lib/data";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -15,29 +16,7 @@ const HowCanIHelp = () => {
   const [icons, setIcons] = useState<TechIcon[]>([]);
 
   useEffect(() => {
-    const iconData = [
-      { iconPath: "/skills/cpp.png", name: "C++" },
-      { iconPath: "/skills/docker.png", name: "Docker" },
-      { iconPath: "/skills/express.png", name: "Express" },
-      { iconPath: "/skills/fastapi.png", name: "FastAPI" },
-      { iconPath: "/skills/figma.png", name: "Figma" },
-      { iconPath: "/skills/git.png", name: "Git" },
-      { iconPath: "/skills/honojs.png", name: "HonoJS" },
-      { iconPath: "/skills/javascript.png", name: "JavaScript" },
-      { iconPath: "/skills/linux.png", name: "Linux" },
-      { iconPath: "/skills/mongo.png", name: "MongoDB" },
-      { iconPath: "/skills/nextjs.png", name: "Next.js" },
-      { iconPath: "/skills/nodejs.png", name: "Node.js" },
-      { iconPath: "/skills/postgres.png", name: "PostgreSQL" },
-      { iconPath: "/skills/python.png", name: "Python" },
-      { iconPath: "/skills/react.png", name: "React" },
-      { iconPath: "/skills/sql.png", name: "SQL" },
-      { iconPath: "/skills/streamlit.png", name: "Streamlit" },
-      { iconPath: "/skills/typescript.png", name: "TypeScript" },
-      { iconPath: "/skills/zod.png", name: "Zod" },
-    ];
-
-    const techIcons = iconData.map((tech) => {
+    const techIcons = skillsData.map((tech) => {
       const top = `${Math.random() * 100}%`;
       const left = `${Math.random() * 100}%`;
       return {

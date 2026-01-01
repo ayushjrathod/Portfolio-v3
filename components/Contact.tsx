@@ -1,4 +1,5 @@
 "use client";
+import { contactData } from "@/lib/data";
 import emailjs from "@emailjs/browser";
 import { FormEvent, useState } from "react";
 
@@ -27,9 +28,9 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceId = "ayushjrathod";
-    const templateId = "template_2vk2u29";
-    const publicKey = "8T3ZNHe4phqccl-IX";
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
     try {
       const templateParams = {
@@ -67,10 +68,9 @@ const Contact = () => {
     <div className="py-8 md:py-16">
       <div className="max-w-4xl mx-auto px-4">
         <div className="p-4 md:p-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 dark:text-white">Get In Touch</h2>
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-2 dark:text-white">{contactData.title}</h2>
           <p className="text-center mb-4 text-base md:text-xl dark:text-gray-300">
-            I am always interested in exploring new opportunities and collaborations. If you have a project in mind or
-            just want to say hi, feel free to reach out!
+            {contactData.description}
           </p>
           {submitStatus && (
             <div

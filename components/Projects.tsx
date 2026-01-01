@@ -1,48 +1,10 @@
 "use client";
+import { projectsData } from "@/lib/data";
 import Image from "next/image";
 import { useState } from "react";
 
 const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      image:
-        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/twtykmlpjspyubqkayk3",
-      alt: "Advista Home Page",
-      title: "Advista",
-      subtitle: "AI-Powered Advertising Research",
-      description:
-        "ADVISTA identifies user pain points and emotional triggers by aggregating data from platforms like Google, YouTube, Reddit, and social media.",
-      github: "https://github.com/ayushjrathod/Advista",
-      tech: ["Next.js", "Hono.js", "OpenAI", "Langchain", "Puppeteer"],
-    },
-    {
-      id: 2,
-      image:
-        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/vva14psdqbet8dnmm1vh",
-      alt: "Nyaybodh Home Page",
-      title: "NyayaBodh",
-      subtitle: "AI Legal Research Engine",
-      description:
-        "Streamlines legal research and document handling using AI. Empowers users with intelligent access to legal information.",
-      github: "https://github.com/ayushjrathod/NyayaBodh",
-      tech: ["Next.js", "FastAPI", "PostgreSQL", "pgVector", "LlamaIndex"],
-    },
-    {
-      id: 3,
-      image:
-        "https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/p3ptajvvqag2nsjksd4j",
-      title: "AuditIQ",
-      subtitle: "AI-Powered Fraud Detection",
-      description:
-        "Automates expense submission reviews with integrated AI-driven fraud detection and intelligent voice-based interrogation.",
-      alt: "AuditIQ Home Page",
-      github: "https://github.com/ayushjrathod/AuditIQ",
-      tech: ["Next.js", "Node.js", "Express", "MongoDB", "GCP"],
-    },
-  ];
-
-  const [activeProject, setActiveProject] = useState(projects[0]);
+  const [activeProject, setActiveProject] = useState(projectsData[0]);
 
   return (
     <div id="projects" className="min-h-screen py-20 px-4">
@@ -58,7 +20,7 @@ const Projects = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16">
           <div className="lg:col-span-1">
             <ul className="space-y-2 sticky top-24">
-              {projects.map((project) => (
+              {projectsData.map((project) => (
                 <li key={project.id}>
                   <button
                     onClick={() => setActiveProject(project)}

@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import { profileData } from "@/lib/data";
 import { ThemeProvider } from "@/lib/ThemeProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -15,10 +16,34 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ayush Rathod",
-  description: "A portfolio website showcasing Ayush Rathod's work and projects.",
+  title: {
+    default: profileData.name,
+    template: `%s | ${profileData.name}`,
+  },
+  description: profileData.bio,
   icons: {
-    icon: "ico",
+    icon: "/favicon.ico",
+  },
+  openGraph: {
+    title: profileData.name,
+    description: profileData.bio,
+    url: "https://ayushrathod.com", // Replace with actual URL
+    siteName: profileData.name,
+    images: [
+      {
+        url: profileData.image,
+        width: 800,
+        height: 600,
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: profileData.name,
+    description: profileData.bio,
+    images: [profileData.image],
   },
 };
 
@@ -29,21 +54,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <head>
-        {/* Preload critical images */}
-        <link
-          rel="preload"
-          as="image"
-          href="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_200,h_200,c_fill,g_face/v1750407073/rwh3vitd2cyltekuz6qo.jpg"
-          type="image/jpeg"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href="https://res.cloudinary.com/cnserver/image/upload/f_auto,q_auto,w_800,h_450,c_fill/t_projects_section/twtykmlpjspyubqkayk3"
-          type="image/jpeg"
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300`}
       >
