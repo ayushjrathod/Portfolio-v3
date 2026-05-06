@@ -118,15 +118,15 @@ export const projects = [
   {
     slug: "advista",
     name: "Advista",
-    tagline: "AI advertisement research engine",
+    tagline: "AI competitive intelligence platform",
     description:
-      "An automated ad-research platform that eliminates timeout issues in long-running AI workflows by offloading to a Celery + Redis async pipeline — keeping the UI responsive while research runs in the background.",
+      "Built for marketers who need real intelligence, not summaries. Runs async multi-source research in the background so the UI stays live, then delivers structured 7-section market reports tied to a persisted session history.",
     bullets: [
-      "End-to-end research pipeline that aggregates web data into structured, actionable marketing insights.",
-      "Schema-validated LLM outputs (Zod) for reliable, consistent dashboards — no silent format drift.",
-      "FastAPI + React on top of Celery workers and Redis, deployed in Docker on Azure.",
+      "LangGraph agentic workflow with Zod schema-enforced LLM extraction keeps every report section consistent and predictably structured across runs.",
+      "Celery + Redis task queue decouples Groq inference from the HTTP cycle; the client polls a job-status endpoint while workers handle multi-source synthesis.",
+      "Firebase Auth scopes each session and artifact to a verified user; containerized in Docker and deployed on AWS Lambda with Prisma/Postgres persistence.",
     ],
-    tags: ["React", "FastAPI", "LangChain", "Celery", "Redis", "PostgreSQL", "Docker", "Azure"],
+    tags: ["FastAPI", "LangGraph", "Groq", "Celery", "Redis", "React", "PostgreSQL", "Prisma", "Firebase", "Docker", "AWS Lambda"],
     links: {
       repositories: [
         {
@@ -138,7 +138,51 @@ export const projects = [
           href: "https://github.com/ayushjrathod/Advista_api",
         },
       ],
-      live: "https://advista.ayushjrathod.live/",
+      live: "https://advista.ayushjrathod.live/" as string | null,
+    },
+  },
+  {
+    slug: "valuex",
+    name: "ValueX",
+    tagline: "Wealth management AI microservice",
+    description:
+      "A wealth management API built without frameworks: a raw intent classifier, 8 specialist agents, and disciplined cost control from the ground up.",
+    bullets: [
+      "Single LLM call maps each query to 1 of 8 specialist agents; a pre-LLM safety guard blocks unsafe inputs in under 10ms before any inference runs.",
+      "SSE streaming delivers p95 first-token latency under 2s while holding a hard $0.05/query cost ceiling at gpt-4.1 pricing.",
+      "100+ labeled eval queries with ≥85% routing accuracy and ≥95% safety recall; CI mocks the LLM layer so guard and routing logic are tested on every push.",
+    ],
+    tags: ["FastAPI", "Python", "OpenAI", "SSE", "pytest"],
+    links: {
+      repositories: [
+        {
+          label: "GitHub",
+          href: "https://github.com/ayushjrathod/ValueX",
+        },
+      ],
+      live: null as string | null,
+    },
+  },
+  {
+    slug: "querypilot",
+    name: "QueryPilot",
+    tagline: "Perplexity-style deep research assistant",
+    description:
+      "Ask a question, get a sourced answer streamed in real time. Full-stack research engine with structured citations and persistent authenticated sessions.",
+    bullets: [
+      "Tavily advanced-depth search feeds a Gemini 2.5 Flash streaming pipeline; citation objects (title + URL) appended as structured JSON at stream end, not inlined.",
+      "bcrypt accounts with JWT auth; each query and its citation list stored in Postgres via Prisma, with full history queryable per user.",
+      "Monorepo on Bun: Express 5 API + React 19 / React Router 7 / Tailwind 4 client, both bundled natively with hot reload in dev.",
+    ],
+    tags: ["TypeScript", "Bun", "Google Gemini", "Tavily", "PostgreSQL", "Prisma", "React", "Express"],
+    links: {
+      repositories: [
+        {
+          label: "GitHub",
+          href: "https://github.com/ayushjrathod/QueryPilot-deep-research-assistant",
+        },
+      ],
+      live: null as string | null,
     },
   },
   {
@@ -146,11 +190,11 @@ export const projects = [
     name: "Microservice Notification System",
     tagline: "Kafka-backed pub/sub notifications for e-commerce",
     description:
-      "A microservice notification platform built around Kafka, GraphQL, and JWT — designed for 2,000+ notifications/min with priority queues, dead letter handling, and first-class observability.",
+      "A microservice notification platform engineered for 2,000+ msg/min sustained throughput, with priority delivery, dead letter handling, and real-time observability.",
     bullets: [
-      "Designed a Kafka pub/sub architecture behind a GraphQL API with JWT auth, targeting 2,000+ notifications/min sustained throughput.",
-      "Added priority-based delivery with dead letter queues and a recommendation layer on top of the delivery pipeline.",
-      "Instrumented with Prometheus and Grafana for real-time monitoring and incident debugging.",
+      "Kafka consumer groups partition traffic by priority tier; failed deliveries route to dead letter queues with configurable retry and reprocessing.",
+      "GraphQL API with JWT auth exposes subscription management and delivery status without coupling consumers to Kafka internals.",
+      "Prometheus + Grafana dashboards track throughput, consumer lag, and error rate in real time for operational debugging.",
     ],
     tags: ["Node.js", "TypeScript", "GraphQL", "Kafka", "MongoDB", "Redis", "Docker"],
     links: {
