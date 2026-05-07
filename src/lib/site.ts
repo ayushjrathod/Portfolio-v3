@@ -100,18 +100,6 @@ export const experience = [
       "Built and maintained a responsive Next.js frontend and Node.js / FastAPI backends on PostgreSQL, reliably handling 300+ daily transactions.",
     ],
   },
-  {
-    id: "dolphai",
-    company: "DolphAI",
-    role: "Full Stack Developer Intern",
-    location: "Hybrid · Pune, India",
-    period: "Jul 2024 — Dec 2024",
-    isCurrent: false,
-    highlights: [
-      "Tracked down slow queries and N+1 hotspots, added the right indexes, and brought page load time from 3 s to under 1 s.",
-      "Automated containerized AWS deployments (EC2, ALB, Auto Scaling, VPC, CloudWatch, S3) with Docker and GitHub Actions — faster, more reliable releases.",
-    ],
-  },
 ] as const;
 
 export const projects = [
