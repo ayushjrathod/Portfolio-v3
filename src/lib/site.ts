@@ -148,7 +148,7 @@ export const projects = [
           href: "https://github.com/ayushjrathod/ValueX",
         },
       ],
-      live: null as string | null,
+      live: "https://valuex.ayushjrathod.live/" as string | null,
     },
   },
   {
