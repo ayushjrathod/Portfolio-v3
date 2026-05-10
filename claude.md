@@ -35,7 +35,6 @@ All content comes from the resume. For projects, pick the 2–3 strongest ones.
 
 - One accent color — your choice, something that feels modern and intentional
 - All Framer Motion animations must respect `useReducedMotion()`
-- Cursor spotlight/glow on hero must be disabled on touch devices
 - Lighthouse ≥ 90 across all categories
 - Fully responsive, mobile-first
 - Proper semantic HTML and aria labels throughout

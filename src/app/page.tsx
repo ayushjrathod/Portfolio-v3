@@ -7,6 +7,7 @@ import Projects from "@/components/Projects";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import PageLoader from "@/components/PageLoader";
+import SocialRail from "@/components/SocialRail";
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       </a>
       <PageLoader />
       <Navbar />
+      <SocialRail />
       <main id="main" className="relative isolate overflow-hidden">
         <Hero />
         <About />

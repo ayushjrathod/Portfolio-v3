@@ -3,6 +3,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { site, status } from "@/lib/site";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 const CV_PATH = "/AyushRathod.pdf";
 const SCRAMBLE_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$";
@@ -13,44 +14,6 @@ const stats = [
   { value: 5, suffix: "+", label: "Systems Shipped" },
 ] as const;
 
-const quickNotes = [
-  "Fast from idea to shipped product",
-  "Backend and AI systems built for real users",
-  "I own execution end to end",
-] as const;
-
-const socialIcons = {
-  github: (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.9c.57.1.78-.25.78-.55 0-.27-.01-1.16-.01-2.1-3.2.7-3.87-1.37-3.87-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.72 1.26 3.38.96.1-.75.41-1.26.74-1.55-2.55-.29-5.23-1.28-5.23-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.47.11-3.06 0 0 .97-.31 3.18 1.18a11 11 0 0 1 6 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.77.11 3.06.74.8 1.19 1.82 1.19 3.08 0 4.42-2.69 5.38-5.26 5.66.41.36.78 1.08.78 2.18 0 1.57-.02 2.84-.02 3.23 0 .31.21.66.79.55A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"
-      />
-    </svg>
-  ),
-  linkedin: (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.65-1.85 3.4-1.85 3.64 0 4.31 2.4 4.31 5.52v6.22ZM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"
-      />
-    </svg>
-  ),
-  twitter: (
-    <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-      <path
-        fill="currentColor"
-        d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-      />
-    </svg>
-  ),
-} as const;
-
-const heroSocials = [
-  { label: "GitHub", href: site.social.github, icon: socialIcons.github },
-  { label: "LinkedIn", href: site.social.linkedin, icon: socialIcons.linkedin },
-  { label: "X (Twitter)", href: site.social.twitter, icon: socialIcons.twitter },
-] as const;
 
 // --- Scramble name animation ---
 function ScrambleName({ name, delay = 0 }: { name: string; delay?: number }) {
@@ -145,7 +108,7 @@ export default function Hero() {
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto w-full max-w-6xl">
-        <div className="grid items-start gap-14 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-12">
+        <div className="grid items-start gap-14 lg:grid-cols-[minmax(0,1fr)_24rem] lg:gap-14">
           <div className="max-w-4xl">
           <motion.div
             className="mb-8 flex flex-wrap items-center gap-3"
@@ -251,48 +214,23 @@ export default function Hero() {
           </div>
 
           <motion.aside
-            className="surface-panel hidden p-6 lg:block"
+            className="hidden self-stretch lg:block"
             initial={reduce ? false : { opacity: 0, x: 18 }}
             animate={reduce ? undefined : { opacity: 1, x: 0 }}
             transition={{ delay: 0.95, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative">
-              <p className="text-[11px] font-medium uppercase tracking-[0.26em] text-slate-500">
-                Snapshot
-              </p>
-              <div className="mt-6 grid gap-4 text-sm text-slate-400">
-                <div className="rounded-2xl border border-white/[0.08] bg-transparent p-4">
-                  <p className="text-[10px] uppercase tracking-[0.24em] text-slate-600">Based in</p>
-                  <p className="mt-2 text-base text-slate-100">{site.location}</p>
-                </div>
-                <div className="rounded-2xl border border-white/[0.08] bg-transparent p-4">
-                  <p className="text-[10px] uppercase tracking-[0.24em] text-slate-600">Current focus</p>
-                  <p className="mt-2 leading-relaxed text-slate-300">Applied AI systems, backend architecture and system design, and shipping developer-facing infrastructure.</p>
-                </div>
-              </div>
-
-              <div className="mt-6 space-y-3 border-t border-white/[0.08] pt-6">
-                {quickNotes.map((note) => (
-                  <div key={note} className="flex items-start gap-3 text-sm leading-relaxed text-slate-400">
-                    <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
-                    <span>{note}</span>
-                  </div>
-                ))}
-
-                <div className="flex flex-wrap items-center gap-3 pt-3">
-                  {heroSocials.map((item) => (
-                    <a
-                      key={item.label}
-                      href={item.href}
-                      target="_blank"
-                      rel="noreferrer noopener"
-                      aria-label={item.label}
-                      className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-white/[0.08] bg-white/[0.02] text-slate-400 transition-colors hover:border-accent/30 hover:text-accent focus-visible:border-accent/40 focus-visible:text-accent"
-                    >
-                      {item.icon}
-                    </a>
-                  ))}
-                </div>
+            <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl border border-white/[0.08]">
+              <Image
+                src="/my_image_sketch.png"
+                alt="Ayush Rathod"
+                fill
+                className="object-cover object-top"
+                priority
+              />
+              <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+                <div className="absolute inset-x-0 bottom-0 h-1/4" style={{ background: "linear-gradient(to top, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-y-0 left-0 w-[12%]" style={{ background: "linear-gradient(to right, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-y-0 right-0 w-[12%]" style={{ background: "linear-gradient(to left, #08080c 0%, transparent 100%)" }} />
               </div>
             </div>
           </motion.aside>

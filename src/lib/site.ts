@@ -105,6 +105,7 @@ export const experience = [
 export const projects = [
   {
     slug: "advista",
+    image: "/project/advista.png",
     name: "Advista",
     tagline: "AI competitive intelligence platform",
     description:
@@ -131,6 +132,7 @@ export const projects = [
   },
   {
     slug: "valuex",
+    image: "/project/valuex.png",
     name: "ValueX",
     tagline: "Wealth management AI microservice",
     description:
