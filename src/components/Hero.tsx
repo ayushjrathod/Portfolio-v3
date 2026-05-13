@@ -219,7 +219,7 @@ export default function Hero() {
             animate={reduce ? undefined : { opacity: 1, x: 0 }}
             transition={{ delay: 0.95, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="relative h-full min-h-[420px] overflow-hidden rounded-2xl border border-white/[0.08]">
+            <div className="relative h-full min-h-[420px] overflow-hidden">
               <Image
                 src="/my_image_sketch.png"
                 alt="Ayush Rathod"
@@ -228,9 +228,10 @@ export default function Hero() {
                 priority
               />
               <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-                <div className="absolute inset-x-0 bottom-0 h-1/4" style={{ background: "linear-gradient(to top, #08080c 0%, transparent 100%)" }} />
-                <div className="absolute inset-y-0 left-0 w-[12%]" style={{ background: "linear-gradient(to right, #08080c 0%, transparent 100%)" }} />
-                <div className="absolute inset-y-0 right-0 w-[12%]" style={{ background: "linear-gradient(to left, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-x-0 top-0 h-[15%]" style={{ background: "linear-gradient(to bottom, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-x-0 bottom-0 h-2/5" style={{ background: "linear-gradient(to top, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-y-0 left-0 w-[28%]" style={{ background: "linear-gradient(to right, #08080c 0%, transparent 100%)" }} />
+                <div className="absolute inset-y-0 right-0 w-[28%]" style={{ background: "linear-gradient(to left, #08080c 0%, transparent 100%)" }} />
               </div>
             </div>
           </motion.aside>
