@@ -44,7 +44,7 @@ function BrowserFrame({ src, alt, slug, href }: { src: string; alt: string; slug
         </div>
         <div className="flex min-w-0 flex-1 justify-center">
           <span className="rounded-full border border-white/[0.07] bg-white/[0.03] px-4 py-1 font-mono text-[10px] text-slate-600 truncate">
-            {slug}.ayushjrathod.live
+            {slug}.ayushjrathod.dev
           </span>
         </div>
       </div>

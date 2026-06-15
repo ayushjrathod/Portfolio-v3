@@ -2,7 +2,7 @@ export const site = {
   name: "Ayush Rathod",
   title: "AI & Software Engineer",
   tagline: "I build AI systems that actually ship.",
-  url: "https://ayushjrathod.live",
+  url: "https://ayushjrathod.dev",
   description:
     "Ayush Rathod — Full-stack software engineer building backend-heavy distributed systems and AI-integrated applications. Currently SWE Intern at DevDynamics.",
   ogImage:
@@ -127,7 +127,7 @@ export const projects = [
           href: "https://github.com/ayushjrathod/Advista_api",
         },
       ],
-      live: "https://advista.ayushjrathod.live/" as string | null,
+      live: "https://advista.ayushjrathod.dev/" as string | null,
     },
   },
   {
@@ -150,7 +150,7 @@ export const projects = [
           href: "https://github.com/ayushjrathod/ValueX",
         },
       ],
-      live: "https://valuex.ayushjrathod.live/" as string | null,
+      live: "https://valuex.ayushjrathod.dev/" as string | null,
     },
   },
   {
